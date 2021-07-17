@@ -1,12 +1,12 @@
 from time import sleep
 
 import pandas as pd
-from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.keys import Keys
 
-from housinginit import Complex, complex_objects, failed_complexes, complex_names
-from driverinit import driver,google_url
+from driverinit import driver, google_url
+from housinginit import (Complex, complex_names, complex_objects,
+                         failed_complexes)
 
 driver.get(google_url)
 driver.maximize_window()
@@ -87,10 +87,12 @@ for i in range(len(complex_names)):
 
 
 ### Unpack complex_objects and create df
-data = {"complex_names": [b.name for a,b in complex_objects.items()], "complex_address": [b.address for a,b in complex_objects.items()], "complex_rating": [b.rating for a,b in complex_objects.items()]}
+data = {"complex_names": [b.name for b in complex_objects.values()], "complex_address": [b.address for b in complex_objects.values()], "complex_rating": [b.rating for b in complex_objects.values()]}
 df = pd.DataFrame(data=data)
 
-
+to_csv = True
+if to_csv:
+    df.to_csv("/Users/nicholasoxenden/Oxenden/Programming/Scrapy/housing/488_repo/488/selhousing/ratings_output.csv",ignore_index=True)
 
 
 
