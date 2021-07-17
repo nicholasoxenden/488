@@ -5,18 +5,9 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.keys import Keys
 
-from housinginit import Complex, complex_objects, failed_complexes 
+from housinginit import Complex, complex_objects, failed_complexes, complex_names
+from driverinit import driver,google_url
 
-### Read in complex names
-housing_df = pd.read_csv("/Users/nicholasoxenden/Oxenden/Programming/Scrapy/housing/complex_list.csv")
-complex_names = housing_df['complex_name']
-
-### Driver Setup
-PATH = r'/Users/nicholasoxenden/Oxenden/Work/ECON RA/Chromedriver/chromedriver' #needs the r before the filepath in quotes for some reason
-driver = webdriver.Chrome(PATH)
-
-### Begin Navigation
-google_url = "https://www.google.com/"
 driver.get(google_url)
 driver.maximize_window()
 
