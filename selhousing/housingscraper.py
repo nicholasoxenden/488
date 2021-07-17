@@ -85,6 +85,7 @@ for i in range(len(complex_names)):
         failed_complexes.append(complex_name)
         driver.get(google_url)
 
+driver.close()
 
 ### Unpack complex_objects and create df
 data = {"complex_names": [b.name for b in complex_objects.values()], 
