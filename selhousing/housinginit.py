@@ -3,10 +3,11 @@ import pandas as pd
 ### Basic Instantiation
 
 class Complex():
-    def __init__(self,name,address,rating):
+    def __init__(self,name,address,rating,num_of_reviews):
         self.name = name
         self.address = address
         self.rating = rating
+        self.num_of_reviews = num_of_reviews
     def __str__(self):
         print(self.name)
 

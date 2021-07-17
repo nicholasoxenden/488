@@ -67,7 +67,7 @@ for i in range(len(complex_names)):
         name, address = name_and_address.text.split('\n')
 
         ### Create APT Complex Object and add to dict
-        complex_objects[complex_name] = Complex(complex_name,address,rating)
+        complex_objects[complex_name] = Complex(complex_name,address,rating, num_of_reviews)
 
         sleep(2)
 
@@ -87,7 +87,10 @@ for i in range(len(complex_names)):
 
 
 ### Unpack complex_objects and create df
-data = {"complex_names": [b.name for b in complex_objects.values()], "complex_address": [b.address for b in complex_objects.values()], "complex_rating": [b.rating for b in complex_objects.values()]}
+data = {"complex_names": [b.name for b in complex_objects.values()], 
+        "complex_address": [b.address for b in complex_objects.values()], 
+        "complex_rating": [b.rating for b in complex_objects.values()],
+        "num_of_reviews": [b.num_of_reviews for b in complex_objects.values()]}
 df = pd.DataFrame(data=data)
 
 to_csv = True
